@@ -37,7 +37,7 @@ void setup() {
 
 void draw(){
   background(darkBlue);
-  directionalLight(255, 255, 255, 0.5,0.8,-0.6);
+  directionalLight(255, 255, 255, 0.5,0.8,-0.5);
     
   for(Star s : stars) {
     s.display();
@@ -47,12 +47,14 @@ void draw(){
   //floaty box
   pushMatrix();
     fill(red);
-    translate(width/2,height/1.5);
-    rotateX(perspectiveAngle);
-    box(80,80,40*cos(2*PI/30*frameCount)+350);
+    translate(width/2,height/1.4);
+    //rotate with wave
+    rotateX(perspectiveAngle+PI/90*sea.waveAmplitude()*abs(sin(2*PI/30*frameCount)));
+    rotateY(sea.calculateWaveAngle());
+    box(100,100,40*sin(2*PI/30*frameCount)*sea.waveAmplitude()+390);
   popMatrix();
   
-  //saveFrames(30);
+  //saveFrames(150);
 }
 
 //save first n frames
