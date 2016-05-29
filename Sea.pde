@@ -15,7 +15,7 @@ class Sea {
   */
   float waveAmplitude() {
     float wavelength = 5 * frameRate;
-    return( 1 + 1.5*pow(sin(PI/wavelength * (frameCount-5)),2) );
+    return( 0.4 + 1.9*pow(sin(PI/wavelength * (frameCount+5)),2) );
   }
   
   /*

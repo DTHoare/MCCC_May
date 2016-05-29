@@ -47,11 +47,11 @@ void draw(){
   //floaty box
   pushMatrix();
     fill(red);
-    translate(width/2,height/1.4);
+    translate(width/2,height/1.75, 40*sin(2*PI/30*frameCount)*sea.waveAmplitude()+100);
     //rotate with wave
-    rotateX(perspectiveAngle+PI/90*sea.waveAmplitude()*abs(sin(2*PI/30*frameCount)));
+    rotateX(PI/4+PI/90*sea.waveAmplitude()*abs(sin(2*PI/30*frameCount)));
     rotateY(sea.calculateWaveAngle());
-    box(100,100,40*sin(2*PI/30*frameCount)*sea.waveAmplitude()+390);
+    box(120,120,150);
   popMatrix();
   
   //saveFrames(150);
