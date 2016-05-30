@@ -13,6 +13,7 @@ class Star {
   void display() {
     noStroke();
     ellipseMode(CENTER);
+    //make the stars twinkle in a loopable way
     value = sin(offset + 2*PI/30 * frameCount);
     fill(white, 200 + 55*value);
     ellipse(position.x, position.y, size + size/2*value, size + size/2*value);

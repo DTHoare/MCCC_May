@@ -1,12 +1,10 @@
 class Sea {
   int sizeX, sizeY;
-  float rotateAngle;
   float waveWidth;
   
   Sea() {
     sizeX = width*2;
     sizeY = height*2;
-    rotateAngle = -PI/15;
     waveWidth = 1;
   }
   
@@ -36,15 +34,21 @@ class Sea {
   The sea is created as a series of long rectangles
   This is done to approximate a smooth rolling of waves across the surface
   Thinner strips are more accurate but slower
+  Rotates around the top point, at the horizon
   */
   void display() {
     for(int x = -20; x < width+20; x+=waveWidth) {
       pushMatrix();
         fill(blue);
         noStroke();
+        //bobbing sea
         translate(x,height/3, 10*sin(2*PI/30 * frameCount));
-        rotateX(perspectiveAngle + PI/20 * waveAmplitude() * sin(2*PI/30 * (frameCount) + 0.01*(x-width/2)));
-        rotateZ(rotateAngle);
+        
+        //main wave affect as waves roll across the screen
+        rotateX(PI/5 + PI/20 * waveAmplitude() * sin(2*PI/30 * (frameCount) + 0.01*(x-width/2)));
+        
+        //give a slight angle to waves aross screen
+        rotateZ(-PI/15);
         rect(-waveWidth/2,0,waveWidth*1.5,sizeY);
       popMatrix();   
     }
